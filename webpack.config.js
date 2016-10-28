@@ -13,7 +13,12 @@ module.exports = {
       Main: 'app/components/Main.jsx',
       Nav: 'app/components/Nav.jsx',
       Weather: 'app/containers/Weather.jsx',
-      WeatherForm: 'app/components/WeatherForm.jsx'
+      WeatherForm: 'app/components/WeatherForm.jsx',
+      darkSkyApi: 'app/api/darkSkyApi.js',
+      MapBox: 'app/containers/MapBox.jsx',
+      Message: 'app/components/Message',
+      Chart: 'app/components/Chart.jsx',
+      MY_KEYS: 'MY_KEYS.js'
     },
     extensions: ['', '.js', '.jsx']
   },

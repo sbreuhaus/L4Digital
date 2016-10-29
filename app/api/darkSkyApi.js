@@ -1,14 +1,15 @@
 
 import MY_KEYS from 'MY_KEYS';
 
-const DARK_SKY_URL = 'https://api.darksky.net/forecast/' + MY_KEYS.darkSkyKey + '/42.3601,-71.0589'
+const DARK_SKY_URL = 'https://api.darksky.net/forecast/' + MY_KEYS.darkSkyKey;
 
 const darkSkyApi = {
-  getWeather: function(){
+  getWeather: function(lat, lng){
+    let url = `${DARK_SKY_URL}/${lat},${lng}`
     return $.ajax({
       type: 'get',
       dataType: "jsonp",
-      url: DARK_SKY_URL,
+      url: url,
     }).done(function(response){
       return response;
       console.log("HERE'S THE WEATHER", response);

@@ -5,6 +5,7 @@ import ReactHighcharts from 'react-highcharts'; // Expects that Highcharts was l
 var Chart = React.createClass({
   getInitialState: function(){
     return {
+      chart:{bordercolor: 'red'},
       title: {text: "Stephen's Weather App"},
       subtitle: {text: '7 day highs'},
       xAxis: {categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7']},

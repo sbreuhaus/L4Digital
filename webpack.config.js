@@ -1,6 +1,8 @@
+var webpack = require('webpack');
 
 module.exports = {
   entry: [
+    'script!foundation-sites/dist/foundation.min.js',
     './app/app.jsx'
   ],
   output: {
@@ -15,8 +17,8 @@ module.exports = {
       Weather: 'app/containers/Weather.jsx',
       WeatherForm: 'app/components/WeatherForm.jsx',
       darkSkyApi: 'app/api/darkSkyApi.js',
-      MapBox: 'app/containers/MapBox.jsx',
-      Message: 'app/components/Message',
+      MapBox: 'app/components/MapBox.jsx',
+      ShowData: 'app/components/ShowData.jsx',
       Chart: 'app/components/Chart.jsx',
       MY_KEYS: 'MY_KEYS.js'
     },

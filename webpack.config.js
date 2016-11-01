@@ -18,7 +18,8 @@ module.exports = {
       WeatherForm: 'app/components/WeatherForm.jsx',
       darkSkyApi: 'app/api/darkSkyApi.js',
       MapBox: 'app/components/MapBox.jsx',
-      ShowData: 'app/components/ShowData.jsx',
+      Message: 'app/components/Message.jsx',
+      Table: 'app/components/Table.jsx',
       Chart: 'app/components/Chart.jsx',
       MY_KEYS: 'MY_KEYS.js'
     },

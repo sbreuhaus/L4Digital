@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import WeatherForm from 'WeatherForm';
-import ShowData from 'ShowData';
+import Message from 'Message';
 import Chart from 'Chart';
+import Table from 'Table';
 import darkSkyApi from 'darkSkyApi';
 import MY_KEYS from 'MY_KEYS'
+import TEST from '../components/TEST';
 
 export default class Weather extends Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.handleMapDisplay = this.handleMapDisplay.bind(this);
-
+    this.handleDateConvert = this.handleDateConvert.bind(this);
     this.state = {
       isLoading: false,
       allWeather: undefined,
@@ -26,13 +28,21 @@ export default class Weather extends Component {
     }
   }
 
+  handleDateConvert(timeStamp) {
+    let tempDate = new Date();
+    tempDate.setTime(timeStamp*1000);
+    let date = tempDate.toUTCString();
+    date = date.slice(0, 3);
+    return date;
+  }
+
   handleMapDisplay(){
     var that = this;
     navigator.geolocation.getCurrentPosition(function(position) {
     console.log("user latitude" + position.coords.latitude);
     console.log("user longitude" + position.coords.longitude);
-    let userLat = position.coords.latitude;
-    let userLong = position.coords.longitude;
+    let userLat = position.coords.latitude,
+       userLong = position.coords.longitude;
     L.mapbox.accessToken = MY_KEYS.MapBoxToken;
     Window.map = L.mapbox.map('map', 'mapbox.streets',{
       zoomControl: true
@@ -56,10 +66,10 @@ export default class Weather extends Component {
       var self = that;
       let m = marker.getLatLng();
       console.log('marker location: ', m.lat, m.lng)
-      let lat = m.lat;
-      let lng = m.lng;
+      let lat = m.lat, lng = m.lng;
       that.setState({
-        isLoading: true
+        isLoading: true,
+        dayNames: undefined
       })
       darkSkyApi.getWeather(lat, lng)
       .then(function(response){
@@ -69,7 +79,8 @@ export default class Weather extends Component {
           isLoading: false,
           currentTemp: allWeather.currently.apparentTemperature,
           forecast: allWeather.daily.data,
-          forecastDesc: allWeather.currently.summary
+          forecastDesc: allWeather.currently.summary,
+          timeZone: allWeather.timeZone
         })
      });
     }
@@ -77,15 +88,26 @@ export default class Weather extends Component {
  }
 
   render(){
-    let { currentTemp, isLoading, forecast, forecastDesc } = this.state;
+    let { allWeather, currentTemp, isLoading, forecast, forecastDesc, timeZone } = this.state;
+    var that = this;
     function renderData(){
       if (isLoading){
         return <h3>Fetching weather...</h3>;
       } else if (currentTemp){
         return(
           <div>
-            <Chart forecast={forecast}/>
-            <ShowData currentTemp={currentTemp} forecastDesc={forecastDesc}/>
+            <Chart
+              forecast={forecast}
+              onConvert={that.handleDateConvert}
+              />
+            <Message
+              currentTemp={currentTemp}
+              forecastDesc={forecastDesc}
+              />
+            <Table
+              forecast={forecast}
+              timeZone={timeZone}
+              onConvert={that.handleDateConvert}/>
           </div>
         )
       }

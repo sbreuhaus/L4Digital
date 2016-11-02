@@ -110,7 +110,7 @@ export default class Weather extends Component {
 
         </div>
         <pre id='coordinates'></pre>
-        <h3 className="text-center message-pin">Drag the pin to get weather from that location</h3>
+        <h3 className="text-center message-pin">Drag the pin to get weather from a location</h3>
         {renderData()}
       </div>
     )

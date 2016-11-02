@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import WeatherForm from 'WeatherForm';
 import Message from 'Message';
 import Chart from 'Chart';
 import Table from 'Table';
 import darkSkyApi from 'darkSkyApi';
 import MY_KEYS from 'MY_KEYS'
-import TEST from '../components/TEST';
 
 export default class Weather extends Component {
   constructor(){
     super();
-    this.handleMapDisplay = this.handleMapDisplay.bind(this);
     this.handleDateConvert = this.handleDateConvert.bind(this);
     this.state = {
       isLoading: false,
@@ -20,15 +17,13 @@ export default class Weather extends Component {
       mapStyle : {
         width: '100%',
         height: '300px',
-        // zIndex: '-4000',
-        // position: 'fixed',
         border: "0",
         padding: "0",
       }
     }
   }
 
-  handleDateConvert(timeStamp) {
+  handleDateConvert(timeStamp) { // converts UNIX to readable day of the week
     let tempDate = new Date();
     tempDate.setTime(timeStamp*1000);
     let date = tempDate.toUTCString();
@@ -36,7 +31,7 @@ export default class Weather extends Component {
     return date;
   }
 
-  handleMapDisplay(){
+  componentDidMount(){ // handles mapbox render
     var that = this;
     navigator.geolocation.getCurrentPosition(function(position) {
     console.log("user latitude" + position.coords.latitude);
@@ -57,12 +52,10 @@ export default class Weather extends Component {
     marker.on('dragend', ondragend);
     Window.map.scrollWheelZoom.disable();
 
-
     // Set the initial marker coordinate on load.
     ondragend()
 
-
-    function ondragend() {
+    function ondragend() { // handles darkSkyApi call
       var self = that;
       let m = marker.getLatLng();
       console.log('marker location: ', m.lat, m.lng)
@@ -88,11 +81,11 @@ export default class Weather extends Component {
  }
 
   render(){
-    let { allWeather, currentTemp, isLoading, forecast, forecastDesc, timeZone } = this.state;
+    let { allWeather, currentTemp, isLoading, forecast, forecastDesc } = this.state;
     var that = this;
     function renderData(){
       if (isLoading){
-        return <h3>Fetching weather...</h3>;
+        return <h3 className="page-title message text-center">Fetching weather...</h3>;
       } else if (currentTemp){
         return(
           <div>
@@ -106,7 +99,6 @@ export default class Weather extends Component {
               />
             <Table
               forecast={forecast}
-              timeZone={timeZone}
               onConvert={that.handleDateConvert}/>
           </div>
         )
@@ -115,7 +107,7 @@ export default class Weather extends Component {
     return (
       <div>
         <div id='map' className='map' style={this.state.mapStyle}>
-          {this.handleMapDisplay()}
+
         </div>
         <pre id='coordinates'></pre>
         {renderData()}

@@ -5,9 +5,7 @@ import ReactHighcharts from 'react-highcharts';
 var Chart = React.createClass({
   getInitialState: function(){
     return {
-      title: {text: "Stephen's Weather App"},
-      subtitle: {text: '7 day highs'},
-      //xAxis: {category: [null]},
+      title: {text: "Highs for this week!"},
       yAxis: {title:{text:'temp'}},
       series: [{
         name: 'City',
@@ -34,7 +32,6 @@ var Chart = React.createClass({
     };
     this.setState({
       series: [{
-        name: this.props.location,
         data: chart.series[0].data,
         lineWidth: 10,
      }],
@@ -48,7 +45,7 @@ var Chart = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="row page-title">
         <ReactHighcharts config={this.state} ref="chart"></ReactHighcharts>
       </div>
     )
@@ -56,5 +53,3 @@ var Chart = React.createClass({
 });
 
 module.exports = Chart;
-
-// ['one', 'two', 'three', 'four', 'five', 'six', 'eight']

@@ -14,6 +14,7 @@ const darkSkyApi = {
       return response;
       console.log("HERE'S THE WEATHER", response);
     }).fail(function(response){
+      alert("There has been an error.  Please re-load the page")
       console.log("it failed");
       console.log(response);
     });

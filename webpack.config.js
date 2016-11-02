@@ -19,9 +19,11 @@ module.exports = {
       darkSkyApi: 'app/api/darkSkyApi.js',
       MapBox: 'app/components/MapBox.jsx',
       Message: 'app/components/Message.jsx',
+      About: 'app/components/About.jsx',
       Table: 'app/components/Table.jsx',
       Chart: 'app/components/Chart.jsx',
-      MY_KEYS: 'MY_KEYS.js'
+      MY_KEYS: 'MY_KEYS.js',
+      applicationStyles: 'app/styles/app.css'
     },
     extensions: ['', '.js', '.jsx']
   },

@@ -18,8 +18,8 @@ export default class Table extends Component{
             </tr>
     });
     return(
-      <div>
-        <table className="hover">
+      <div className="row">
+        <table className="hover medium-6 large-8 small-centered">
           <thead>
             <tr>
               <th>Day</th>

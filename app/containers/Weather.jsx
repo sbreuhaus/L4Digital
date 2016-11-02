@@ -39,7 +39,7 @@ export default class Weather extends Component {
     let userLat = position.coords.latitude,
        userLong = position.coords.longitude;
     L.mapbox.accessToken = MY_KEYS.MapBoxToken;
-    Window.map = L.mapbox.map('map', 'mapbox.streets',{
+    Window.map = L.mapbox.map('map', 'mapbox.high-contrast',{
       zoomControl: true
     }).setView(([userLat, userLong]||[40.7527, -73.9772]), 13);
     let marker = L.marker([userLat, userLong], {

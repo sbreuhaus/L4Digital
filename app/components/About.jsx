@@ -5,7 +5,7 @@ const About = () => {
     <div className="row">
       <div className="medium-6 large-8 small-centered">
         <h1 className='text-center page-title'>About</h1>
-        <p>This is simple app built on Node, React, and Foundation.  It utilizes Mapbox by allowing the user to drop a pin location which then uses the darkSky API to retrieve data. The 7 day tempeature highs, as well as the forecast data in a table below.</p>
+        <h4>This app is built on Node, React, and Foundation.  It utilizes Mapbox by allowing the user to drop a pin location to retrieve weather data from the DarkSky API. That data is then displayed in a chart and table below.</h4>
           <ul>
             <li>
               <a href='https://github.com/sbreuhaus/L4Digital'>View the souce code on Github!</a>

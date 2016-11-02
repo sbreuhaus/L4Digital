@@ -10,7 +10,7 @@ L4Digital Weather app
 > npm install
 > npm start
 ```
-
+###### Note: A key and token is needed for the DarkSky and Mapbox API's. These are free, but must be accessible in darkSkyApi.js and Weather.jsx
 
 This app is built on Node, React(ES6), and Foundation.  It utilizes Mapbox by allowing the user to drop a pin location to retrieve weather data from the DarkSky API. That data is then displayed with the Highcharts API and a table below.
 

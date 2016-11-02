@@ -10,3 +10,8 @@
 .message {
   font-family:'Fjalla One', sans-serif;
 }
+
+.message-pin {
+  font-family:'Fjalla One', sans-serif;
+  margin-top: 1.5rem;
+}

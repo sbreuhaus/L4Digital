@@ -5,7 +5,7 @@ import ReactHighcharts from 'react-highcharts';
 var Chart = React.createClass({
   getInitialState: function(){
     return {
-      title: {text: "Highs for this week!"},
+      title: {text: ""},
       yAxis: {title:{text:'temp'}},
       series: [{
         name: 'City',
@@ -32,6 +32,7 @@ var Chart = React.createClass({
     };
     this.setState({
       series: [{
+        name: 'Highs for the week',
         data: chart.series[0].data,
         lineWidth: 10,
      }],
